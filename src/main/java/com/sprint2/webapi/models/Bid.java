@@ -4,47 +4,50 @@ package com.sprint2.webapi.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
-@Document
+@Document(collection = "bids")
 public class Bid {
 
     @Id
-    private Integer id;
-    private Integer userId;
-    private Integer auctionId;
+    private String id;
+    private String userId;
+    private String auctionId;
 
     private String bidTime;
+    @NotNull
     private double bidAmount;
 
-    public Bid(Integer userId, Integer auctionId, String bidTime, double bidAmount) {
+    public Bid(String userId, String auctionId, String bidTime, double bidAmount) {
         this.userId = userId;
         this.auctionId = auctionId;
         this.bidTime = bidTime;
         this.bidAmount = bidAmount;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public Integer getAuctionId() {
+    public String getAuctionId() {
         return auctionId;
     }
 
-    public void setAuctionId(Integer auctionId) {
+    public void setAuctionId(String auctionId) {
         this.auctionId = auctionId;
     }
 
