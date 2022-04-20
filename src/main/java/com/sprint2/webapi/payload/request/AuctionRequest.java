@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
@@ -19,9 +20,9 @@ public class AuctionRequest {
     private String name;
     @NotBlank
     private String description;
-
+    @NotNull
     private double price;
-
+    @NotNull
     private double buyout;
     @NotBlank
     private String endTime;

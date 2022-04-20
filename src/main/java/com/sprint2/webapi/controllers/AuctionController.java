@@ -23,7 +23,9 @@ public class AuctionController {
     @PostMapping("/createauction")
     public ResponseEntity<?> createAuction(@Valid @RequestBody AuctionRequest auctionRequest) {
         Auction auction = new Auction(auctionRequest.getOwnerId(),
-                auctionRequest.getImageURL(),auctionRequest.getCategory(),auctionRequest.getName(),auctionRequest.getDescription(),auctionRequest.getPrice(),auctionRequest.getBuyout(),auctionRequest.getEndTime(),auctionRequest.getOrderStatus());
+                auctionRequest.getImageURL(),auctionRequest.getCategory(),
+                auctionRequest.getName(),auctionRequest.getDescription(),auctionRequest.getPrice(),
+                auctionRequest.getBuyout(),auctionRequest.getEndTime(),auctionRequest.getOrderStatus());
 
 
         auctionRepository.save(auction);
