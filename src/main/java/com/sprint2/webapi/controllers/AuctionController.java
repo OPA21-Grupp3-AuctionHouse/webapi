@@ -1,11 +1,9 @@
 package com.sprint2.webapi.controllers;
 
 import com.sprint2.webapi.models.Auction;
-import com.sprint2.webapi.payload.request.AuctionRequest;
 import com.sprint2.webapi.repository.AuctionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,11 +19,7 @@ public class AuctionController {
 
 
     @PostMapping("/createauction")
-    public ResponseEntity<?> createAuction(@Valid @RequestBody AuctionRequest auctionRequest) {
-        Auction auction = new Auction(auctionRequest.getOwnerId(),
-                auctionRequest.getImageURL(),auctionRequest.getCategory(),
-                auctionRequest.getName(),auctionRequest.getDescription(),auctionRequest.getPrice(),
-                auctionRequest.getBuyout(),auctionRequest.getEndTime(),auctionRequest.getOrderStatus());
+    public ResponseEntity<?> createAuction(@Valid @RequestBody Auction auction) {
 
 
         auctionRepository.save(auction);
