@@ -1,43 +1,32 @@
-package com.sprint2.webapi.models;
+package com.sprint2.webapi.payload.request;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
-public class Auction {
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.util.Set;
 
-    @Id
-    private String id;
+public class AuctionRequest {
+
+    @NotBlank
     private String ownerId;
-
+    @NotBlank
     private String imageURL;
+    @NotBlank
     private String category;
+    @NotBlank
     private String name;
+    @NotBlank
     private String description;
+
     private double price;
+
     private double buyout;
+    @NotBlank
     private String endTime;
+    @NotBlank
     private String orderStatus;
-
-    public Auction(String ownerId, String imageURL, String category, String name, String description, double price, double buyout, String endTime, String orderStatus) {
-        this.ownerId = ownerId;
-        this.imageURL = imageURL;
-        this.category = category;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.buyout = buyout;
-        this.endTime = endTime;
-        this.orderStatus = orderStatus;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getOwnerId() {
         return ownerId;
@@ -110,4 +99,7 @@ public class Auction {
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
     }
+
+
+
 }
