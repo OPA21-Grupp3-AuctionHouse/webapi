@@ -3,7 +3,7 @@ package com.sprint2.webapi.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "auction")
 public class Auction {
 
     @Id

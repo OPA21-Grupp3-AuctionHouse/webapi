@@ -1,9 +1,11 @@
-package com.sprint2.webapi.security.services;
+package com.sprint2.webapi.services;
 
 import com.sprint2.webapi.models.Bid;
 import com.sprint2.webapi.repository.BidRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class BidService {
@@ -22,5 +24,9 @@ public class BidService {
     public String deleteBid(String id) {
         bidRepository.deleteById(id);
         return "bid deleted";
+    }
+
+    public List<Bid> getAllBids() {
+        return bidRepository.findAll();
     }
 }
