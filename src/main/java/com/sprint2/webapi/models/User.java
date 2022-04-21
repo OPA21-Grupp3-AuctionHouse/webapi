@@ -10,7 +10,7 @@ import java.util.Set;
 @Document(collection = "users")
 public class User {
     @Id
-    private Integer id;
+    private String id;
 
     private String firstName;
     private String lastName;
@@ -38,11 +38,11 @@ public class User {
         this.city = city;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

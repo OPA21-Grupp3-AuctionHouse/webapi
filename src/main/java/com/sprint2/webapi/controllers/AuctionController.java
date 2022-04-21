@@ -3,6 +3,7 @@ package com.sprint2.webapi.controllers;
 import com.sprint2.webapi.models.Auction;
 import com.sprint2.webapi.payload.request.AuctionRequest;
 import com.sprint2.webapi.repository.AuctionRepository;
+import com.sprint2.webapi.security.services.AuctionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,6 +19,8 @@ public class AuctionController {
 
     @Autowired
     AuctionRepository auctionRepository;
+    @Autowired
+    AuctionService auctionService;
 
 
     @PostMapping("/createauction")
@@ -33,6 +36,11 @@ public class AuctionController {
         return ResponseEntity.ok("User registered successfully!");
     }
 
+
+    @GetMapping("/getById/{id}")
+    public Auction getAuctionById(@PathVariable String id){
+        return auctionService.getAuctionById(id);
+    }
 
     @GetMapping("/auctions")
     public List<Auction> getAllAuctions() {
