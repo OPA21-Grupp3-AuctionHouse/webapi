@@ -1,4 +1,4 @@
-package com.sprint2.webapi.security.services;
+package com.sprint2.webapi.services;
 
 
 import com.sprint2.webapi.models.Auction;
