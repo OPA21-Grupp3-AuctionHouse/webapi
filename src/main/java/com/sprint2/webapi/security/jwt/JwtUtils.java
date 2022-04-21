@@ -13,8 +13,6 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
 
-import com.sprint2.webapi.security.services.UserDetailsImpl;
-
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
@@ -26,13 +24,13 @@ import io.jsonwebtoken.UnsupportedJwtException;
 public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-    @Value("${starter.app.jwtSecret}")
+    @Value("${webapi.app.jwtSecret}")
     private String jwtSecret;
 
-    @Value("${starter.app.jwtExpirationMs}")
+    @Value("${webapi.app.jwtExpirationMs}")
     private int jwtExpirationMs;
 
-    @Value("${starter.app.jwtCookieName}")
+    @Value("${webapi.app.jwtCookieName}")
     private String jwtCookie;
 
     public String getJwtFromCookies(HttpServletRequest request) {

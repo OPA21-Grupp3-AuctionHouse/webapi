@@ -5,6 +5,10 @@ import java.util.Set;
 import javax.validation.constraints.*;
 
 public class SignupRequest {
+
+    private String firstName;
+    private String lastName;
+
     @NotBlank
     @Size(min = 3, max = 20)
     private String username;
@@ -14,11 +18,55 @@ public class SignupRequest {
     @Email
     private String email;
 
-    private Set<String> roles;
-
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;
+
+    private String streetAddress;
+    private String postCode;
+    private String city;
+
+    private Set<String> roles;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public String getUsername() {
         return username;
