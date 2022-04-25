@@ -3,12 +3,12 @@ package com.sprint2.webapi.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "auction")
 public class Auction {
 
     @Id
-    private Integer id;
-    private Integer ownerId;
+    private String id;
+    private String ownerId;
 
     private String imageURL;
     private String category;
@@ -19,7 +19,7 @@ public class Auction {
     private String endTime;
     private String orderStatus;
 
-    public Auction(Integer ownerId, String imageURL, String category, String name, String description, double price, double buyout, String endTime, String orderStatus) {
+    public Auction(String ownerId, String imageURL, String category, String name, String description, double price, double buyout, String endTime, String orderStatus) {
         this.ownerId = ownerId;
         this.imageURL = imageURL;
         this.category = category;
@@ -31,19 +31,19 @@ public class Auction {
         this.orderStatus = orderStatus;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Integer getOwnerId() {
+    public String getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(Integer ownerId) {
+    public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
     }
 
