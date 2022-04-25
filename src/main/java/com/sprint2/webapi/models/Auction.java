@@ -3,6 +3,7 @@ package com.sprint2.webapi.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 @Document(collection = "auction")
 public class Auction {
 
@@ -37,6 +38,7 @@ public class Auction {
 
     public void setId(String id) {
         this.id = id;
+        
     }
 
     public String getOwnerId() {
