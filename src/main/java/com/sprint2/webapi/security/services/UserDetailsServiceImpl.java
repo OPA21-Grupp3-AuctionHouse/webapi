@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sprint2.webapi.models.User;
-import com.sprint2.webapi.repository.UserRepository;
 
 
 @Service

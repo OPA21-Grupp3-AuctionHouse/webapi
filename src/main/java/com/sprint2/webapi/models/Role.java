@@ -1,3 +1,4 @@
+/*
 package com.sprint2.webapi.models;
 
 import org.springframework.data.annotation.Id;
@@ -9,14 +10,14 @@ public class Role {
     @Id
     private String id;
 
-    private ERole name;
+    private ERole role = ERole.ROLE_USER;
 
     public Role() {
 
     }
 
-    public Role(ERole name) {
-        this.name = name;
+    public Role(ERole role) {
+        this.role = role;
     }
 
     public String getId() {
@@ -27,11 +28,12 @@ public class Role {
         this.id = id;
     }
 
-    public ERole getName() {
-        return name;
+    public ERole getRole() {
+        return role;
     }
 
-    public void setName(ERole name) {
-        this.name = name;
+    public void setRole(ERole role) {
+        this.role = role;
     }
 }
+*/

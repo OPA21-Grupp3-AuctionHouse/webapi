@@ -1,6 +1,5 @@
 package com.sprint2.webapi.controllers;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,16 +7,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/")
 public class TestController {
-    @GetMapping("/all")
+    @GetMapping("/welcomepage")
     public String allAccess() {
-        return "Public Content.";
+        return "Welcome Page";
     }
 
-    @GetMapping("/user")
-    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/startpage") //should go to startpage of the website because user has been logged in and has verified user role
     public String userAccess() {
-        return "User Content.";
+        return "User Content, Card Bazaar.";
     }
 }

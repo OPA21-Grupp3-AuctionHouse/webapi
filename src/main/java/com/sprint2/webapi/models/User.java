@@ -34,8 +34,6 @@ public class User {
     private String postCode;
     private String city;
 
-    @DBRef
-    private Set<Role> roles = new HashSet<>();
 
     public User(String firstName, String lastName, String username, String email, String password, String streetAddress, String postCode, String city) {
         this.firstName = firstName;
@@ -120,11 +118,11 @@ public class User {
         this.city = city;
     }
 
-    public Set<Role> getRoles() {
+    /*public Set<Role> getRoles() {
         return roles;
     }
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
+    }*/
 }
