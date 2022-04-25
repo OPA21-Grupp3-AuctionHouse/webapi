@@ -2,6 +2,7 @@ package com.sprint2.webapi.controllers;
 
 import com.sprint2.webapi.models.User;
 import com.sprint2.webapi.security.services.UserService;
+import com.sprint2.webapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,8 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    UserRepository userRepository;
 
     @GetMapping("/getById/{id}")
     public User getUserById(@PathVariable String id) {
@@ -31,5 +34,11 @@ public class UserController {
     @PostMapping("/create")
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
+    }
+
+    //Update User information
+    @PutMapping("/update/{id}")
+    public User updateUser(@PathVariable String id, @RequestBody User user){
+        return userService.updateUserById(user, id);
     }
 }
