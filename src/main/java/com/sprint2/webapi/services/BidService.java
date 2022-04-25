@@ -42,4 +42,17 @@ public class BidService {
         }
         return highestBid;
     }
+
+    public Bid getMyHighestBid(String auctionId, String userId) {
+        List<Bid> bidList = bidRepository.findByAuctionIdAndUserId(auctionId, userId);
+        double currentBid = 0;
+        Bid myHighestBid = null;
+        for (Bid bid: bidList) {
+            if (bid.getBidAmount() >= currentBid) {
+                currentBid = bid.getBidAmount();
+                myHighestBid = bid;
+            }
+        }
+        return myHighestBid;
+    }
 }

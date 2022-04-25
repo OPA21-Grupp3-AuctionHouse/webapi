@@ -39,4 +39,9 @@ public class BidController {
     public Bid getHighestBid(@PathVariable String id) {
         return bidService.getHighestBid(id);
     }
+
+    @GetMapping("/myHighestBid/{auctionId}/{userId}")
+    public Bid getMyHighestBid(@PathVariable String auctionId, @PathVariable String userId) {
+        return bidService.getMyHighestBid(auctionId, userId);
+    }
 }

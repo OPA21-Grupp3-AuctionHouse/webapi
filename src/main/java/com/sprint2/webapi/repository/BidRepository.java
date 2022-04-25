@@ -8,4 +8,5 @@ import java.util.List;
 public interface BidRepository extends MongoRepository<Bid, String> {
     Bid findByBidAmount(Bid bid);
     List<Bid> findByAuctionId(String id);
+    List<Bid> findByAuctionIdAndUserId(String AuctionId, String UserId);
 }
