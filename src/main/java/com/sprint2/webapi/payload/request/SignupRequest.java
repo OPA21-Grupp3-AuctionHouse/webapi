@@ -1,7 +1,5 @@
 package com.sprint2.webapi.payload.request;
 
-import java.util.Set;
-
 import javax.validation.constraints.*;
 
 public class SignupRequest {
@@ -25,8 +23,6 @@ public class SignupRequest {
     private String streetAddress;
     private String postCode;
     private String city;
-
-    private Set<String> roles;
 
     public String getFirstName() {
         return firstName;
@@ -92,11 +88,4 @@ public class SignupRequest {
         this.password = password;
     }
 
-    public Set<String> getRoles() {
-        return this.roles;
-    }
-
-    public void setRole(Set<String> roles) {
-        this.roles = roles;
-    }
 }
