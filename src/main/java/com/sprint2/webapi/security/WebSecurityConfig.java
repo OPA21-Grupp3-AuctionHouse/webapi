@@ -57,11 +57,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .antMatcher("/startpage/**").authorizeRequests()
+                .antMatcher("/startpage/**")
+                .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/register").permitAll()
-                .anyRequest().authenticated()
-                .and().formLogin();
+                .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
