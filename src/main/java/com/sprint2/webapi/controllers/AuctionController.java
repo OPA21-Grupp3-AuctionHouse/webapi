@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/test")
+@RequestMapping("/api/")
 public class AuctionController {
 
     private final AuctionService auctionService;
