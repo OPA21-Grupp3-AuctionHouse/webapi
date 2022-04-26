@@ -20,7 +20,7 @@ public class BidController {
         return bidService.createBid(bid);
     }
 
-    @GetMapping("/getById/{id}")
+    @GetMapping("/getBidById/{id}")
     public Bid getBid(@PathVariable String id) {
         return bidService.getBid(id);
     }
