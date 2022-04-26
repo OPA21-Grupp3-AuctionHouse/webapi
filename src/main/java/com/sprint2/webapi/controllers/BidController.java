@@ -30,7 +30,7 @@ public class BidController {
         return bidService.deleteBid(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/allBids")
     public List<Bid> getAllBids() {
         return bidService.getAllBids();
     }
