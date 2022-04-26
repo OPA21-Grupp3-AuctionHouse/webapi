@@ -14,7 +14,7 @@ public class TestController {
         return "Welcome Page";
     }
 
-    @GetMapping("/startpage") //should go to startpage of the website because user has been logged in and has verified user role
+    @GetMapping("/startpage")
     public String userAccess() {
         return "User Content, Card Bazaar.";
     }

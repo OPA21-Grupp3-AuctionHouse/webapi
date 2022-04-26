@@ -36,7 +36,7 @@ public class AuctionController {
 
         auctionService.createAuction(auction);
 
-        return ResponseEntity.ok("User registered successfully!");
+        return ResponseEntity.ok("Auction created successfully!");
 
     }
 
