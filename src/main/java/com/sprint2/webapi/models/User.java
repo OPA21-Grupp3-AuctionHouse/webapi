@@ -1,14 +1,11 @@
 package com.sprint2.webapi.models;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.HashSet;
-import java.util.Set;
 
 @Document(collection = "users")
 public class User {
@@ -117,12 +114,4 @@ public class User {
     public void setCity(String city) {
         this.city = city;
     }
-
-    /*public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }*/
 }

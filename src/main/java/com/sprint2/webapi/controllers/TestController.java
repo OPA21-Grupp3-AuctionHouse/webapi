@@ -1,5 +1,6 @@
 package com.sprint2.webapi.controllers;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,8 @@ public class TestController {
         return "Welcome Page";
     }
 
-    @GetMapping("/startpage") //should go to startpage of the website because user has been logged in and has verified user role
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/startpage")
     public String userAccess() {
         return "User Content, Card Bazaar.";
     }
