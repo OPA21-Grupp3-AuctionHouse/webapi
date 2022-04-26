@@ -14,7 +14,6 @@ import java.util.List;
 @RequestMapping("/api")
 public class AuctionController {
 
-
     @Autowired
     AuctionRepository auctionRepository;
     @Autowired
@@ -28,12 +27,20 @@ public class AuctionController {
         auctionService.createAuction(auction);
 
         return ResponseEntity.ok("User registered successfully!");
-    }
 
+    }
 
     @GetMapping("/auctions")
     public List<Auction> getAllAuctions() {
-        return auctionRepository.findAll();
+        return auctionService.getAuction();
     }
+
+    @GetMapping("/getById/{id}")
+    public Auction getAuctionById(@PathVariable String id){
+        return auctionService.getAuctionById(id);
+
+    }
+
+
 }
 
