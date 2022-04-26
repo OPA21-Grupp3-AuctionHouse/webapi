@@ -21,7 +21,7 @@ public class UserDetailsImpl implements UserDetails {
     private String password;
 
     public UserDetailsImpl(String id, String username, String email, String password
-                           )
+    )
     {
         this.id = id;
         this.username = username;
@@ -36,7 +36,7 @@ public class UserDetailsImpl implements UserDetails {
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword()
-                );
+        );
     }
 
     public String getId() {

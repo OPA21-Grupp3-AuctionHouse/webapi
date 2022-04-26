@@ -4,7 +4,8 @@ package com.sprint2.webapi.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.sql.Timestamp;
+
+import javax.validation.constraints.NotNull;
 
 @Document(collection = "bids")
 public class Bid {
@@ -15,6 +16,7 @@ public class Bid {
     private String auctionId;
 
     private String bidTime;
+    @NotNull
     private double bidAmount;
 
     public Bid(String userId, String auctionId, String bidTime, double bidAmount) {
