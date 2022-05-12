@@ -66,9 +66,8 @@ public class UserService {
         }
     }
 
-    public User deleteUser (String id){
-
-        return userRepository.deleteById(id);
+    public void deleteUser (String id){
+        userRepository.deleteById(id);
     }
 }
 
