@@ -30,7 +30,7 @@ import com.sprint2.webapi.security.services.UserDetailsImpl;
 //Controller receives and handles request after it was filtered by OncePerRequestFilter.
 //AuthController handles signup/login requests
 
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600, allowCredentials = "true")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/")
 public class AuthController {
