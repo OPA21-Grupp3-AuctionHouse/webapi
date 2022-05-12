@@ -36,6 +36,13 @@ public class UserController {
         return userService.createUser(user);
     }
 
+    @GetMapping("/get")
+    public User get(){
+
+
+        return userService.get();
+    }
+
     //Update User information
     @PutMapping("/update/{id}")
     public User updateUser(@PathVariable String id, @RequestBody User user){
