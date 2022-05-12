@@ -26,6 +26,10 @@ import com.sprint2.webapi.repository.UserRepository;
 import com.sprint2.webapi.security.jwt.JwtUtils;
 import com.sprint2.webapi.security.services.UserDetailsImpl;
 
+
+//Controller receives and handles request after it was filtered by OncePerRequestFilter.
+//AuthController handles signup/login requests
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/")
@@ -90,4 +94,5 @@ public class AuthController {
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
+
 }

@@ -9,6 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.sprint2.webapi.models.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/*
+UserDetails contains necessary information (such as: username, password) to build an Authentication object
+if the authentication process is successful.
+*/
 
 public class UserDetailsImpl implements UserDetails {
     private static final long serialVersionUID = 1L;

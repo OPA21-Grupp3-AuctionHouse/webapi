@@ -11,6 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sprint2.webapi.models.User;
 
+/*
+UserDetailsService interface has a method to load User by username and returns a UserDetails object
+that Spring Security can use for authentication and validation.
+*/
+
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
