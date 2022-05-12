@@ -6,7 +6,7 @@ import com.sprint2.webapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -30,6 +30,14 @@ public class UserController {
     public User getUserByEmail(@PathVariable String email){
         return userService.getUserByEmail(email);
     }
+
+    @GetMapping("/get")
+    public User get(){
+
+
+        return userService.get();
+    }
+
 
     @PostMapping("/create")
     public User createUser(@RequestBody User user) {
