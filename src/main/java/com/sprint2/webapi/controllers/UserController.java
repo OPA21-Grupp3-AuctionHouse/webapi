@@ -6,7 +6,7 @@ import com.sprint2.webapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600,  allowCredentials = "true")
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -37,10 +37,10 @@ public class UserController {
     }
 
     @GetMapping("/get")
-    public User get(){
-
-
-        return userService.get();
+    public String get(){
+        User user = userService.get();
+        String userId = user.getId();
+        return userId;
     }
 
     //Update User information
