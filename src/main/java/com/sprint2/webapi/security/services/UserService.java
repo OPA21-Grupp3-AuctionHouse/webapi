@@ -34,8 +34,10 @@ public class UserService {
 
     UserDetailsImpl currentUser(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        return userDetails;
+
+            UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+            return userDetails;
+
     }
 
     public User get() {
