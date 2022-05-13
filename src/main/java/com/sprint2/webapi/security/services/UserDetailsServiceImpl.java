@@ -1,7 +1,6 @@
 package com.sprint2.webapi.security.services;
 
 import com.sprint2.webapi.repository.UserRepository;
-import com.sprint2.webapi.security.services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

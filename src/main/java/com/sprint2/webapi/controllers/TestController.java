@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 public class TestController {
     @GetMapping("/welcomepage")
     public String allAccess() {
         return "Welcome Page";
     }
 
-    @PreAuthorize("isAuthenticated()")
     @GetMapping("/startpage")
     public String userAccess() {
         return "User Content, Card Bazaar.";

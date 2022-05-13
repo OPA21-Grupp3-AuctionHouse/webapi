@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,7 +35,7 @@ import com.sprint2.webapi.security.services.UserDetailsImpl;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/auth")
 public class AuthController {
     @Autowired
     AuthenticationManager authenticationManager;
@@ -48,22 +51,22 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+            UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+            ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
 
-        ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
-
-        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-                .body(new UserInfoResponse(userDetails.getId(),
-                        userDetails.getUsername(),
-                        userDetails.getEmail()
-                        )
-                );
+            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
+                    .body(new UserInfoResponse(
+                                    userDetails.getId(),
+                                    userDetails.getUsername(),
+                                    userDetails.getEmail()
+                            )
+                    );
     }
 
     @PostMapping("/register")
