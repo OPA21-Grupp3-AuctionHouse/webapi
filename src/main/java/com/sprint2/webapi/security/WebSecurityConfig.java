@@ -57,15 +57,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .antMatcher("/startpage/**").authorizeRequests()
+                .antMatcher("/api/**")
+                .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/api/**").permitAll()
-                .antMatchers("/register").permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin();
-
-
+                .and().formLogin()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .deleteCookies("webapi")
+                .clearAuthentication(true);
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-    }
+    } // find out how to filter before every endpoint
 }

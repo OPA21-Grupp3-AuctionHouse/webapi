@@ -1,12 +1,9 @@
 package com.sprint2.webapi.models;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.Data;
-
-@Document(collection = "auction")
+@Document(collection = "auctions")
 public class Auction {
 
     @Id
@@ -14,7 +11,7 @@ public class Auction {
     private String ownerId;
 
 
-    private String imageURL;
+    private String image;
 
     private String category;
     private String name;
@@ -24,10 +21,10 @@ public class Auction {
     private String endTime;
     private String orderStatus;
 
-    public Auction(String ownerId, String imageURL, String category, String name, String description, double price, double buyout, String endTime, String orderStatus) {
+    public Auction(String ownerId, String image, String category, String name, String description, double price, double buyout, String endTime, String orderStatus) {
 
         this.ownerId = ownerId;
-        this.imageURL = imageURL;
+        this.image = image;
         this.category = category;
         this.name = name;
         this.description = description;
@@ -51,11 +48,11 @@ public class Auction {
     }
 
     public String getImageURL() {
-        return imageURL;
+        return image;
     }
 
     public void setImageURL (String image) {
-        this.imageURL = imageURL ;
+        this.image = image ;
     }
 
     public String getCategory() {
