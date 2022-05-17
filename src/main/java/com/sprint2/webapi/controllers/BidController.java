@@ -1,5 +1,6 @@
 package com.sprint2.webapi.controllers;
 
+import com.sprint2.webapi.models.Auction;
 import com.sprint2.webapi.models.Bid;
 import com.sprint2.webapi.services.BidService;
 import org.springframework.beans.factory.annotation.Autowired;
