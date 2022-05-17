@@ -1,6 +1,7 @@
 package com.sprint2.webapi.controllers;
 
 import com.sprint2.webapi.models.Auction;
+import com.sprint2.webapi.models.User;
 import com.sprint2.webapi.repository.AuctionRepository;
 import com.sprint2.webapi.services.AuctionService;
 
@@ -17,7 +18,7 @@ import java.util.List;
 
 
 @AllArgsConstructor
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600,  allowCredentials = "true")
 @RestController
 @RequestMapping("/api/")
 public class AuctionController {
@@ -40,6 +41,11 @@ public class AuctionController {
 
     }
 
+    @PutMapping("/updateauction/")
+    public Auction updateAuction( @RequestBody Auction auction){
+        return auctionService.updateAuctionById(auction);
+    }
+
     @GetMapping("/auctions")
     public List<Auction> getAllAuctions() {
         return auctionService.getAuction();
@@ -50,6 +56,8 @@ public class AuctionController {
         return auctionService.getAuctionById(id);
 
     }
+
+
 
 
 }

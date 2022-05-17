@@ -62,7 +62,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/welcomepage").permitAll()
                 .antMatchers("/api/auth/**").permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin();
+                .and().formLogin()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .deleteCookies("webapi")
+                .clearAuthentication(true);
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     } // find out how to filter before every endpoint

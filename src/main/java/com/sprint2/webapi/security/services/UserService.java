@@ -3,6 +3,8 @@ package com.sprint2.webapi.security.services;
 import com.sprint2.webapi.models.User;
 import com.sprint2.webapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotBlank;
@@ -30,6 +32,18 @@ public class UserService {
         return null;
     }
 
+    UserDetailsImpl currentUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+            UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+            return userDetails;
+
+    }
+
+    public User get() {
+        return userRepository.findById(currentUser().getId()).get();
+    }
+
     public User getUserByEmail(String email){
         List<User> users = userRepository.findAll();
         for (User user: users) {
@@ -55,6 +69,7 @@ public class UserService {
             User urs = userData.get();
             urs.setFirstName(user.getFirstName());
             urs.setLastName(user.getLastName());
+            urs.setEmail(user.getEmail());
             urs.setStreetAddress(user.getStreetAddress());
             urs.setCity(user.getCity());
             urs.setPostCode(user.getPostCode());

@@ -1,5 +1,6 @@
 package com.sprint2.webapi.services;
 
+import com.sprint2.webapi.models.Auction;
 import com.sprint2.webapi.models.Bid;
 import com.sprint2.webapi.repository.BidRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ public class BidService {
 
     @Autowired
     BidRepository bidRepository;
+
+    @Autowired
+    AuctionService auctionService;
 
     public Bid createBid(Bid bid) {
         return bidRepository.save(bid);
