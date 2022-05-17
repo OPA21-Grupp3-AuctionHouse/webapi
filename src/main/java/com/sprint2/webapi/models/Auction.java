@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
 
-@Document(collection = "auction")
+@Document(collection = "auctions")
 public class Auction {
 
     @Id
@@ -23,8 +23,9 @@ public class Auction {
     private double buyout;
     private String endTime;
     private String orderStatus;
+    private String winner;
 
-    public Auction(String ownerId, String imageURL, String category, String name, String description, double price, double buyout, String endTime, String orderStatus) {
+    public Auction(String ownerId, String imageURL, String category, String name, String description, double price, double buyout, String endTime, String orderStatus, String winner) {
 
         this.ownerId = ownerId;
         this.imageURL = imageURL;
@@ -35,6 +36,7 @@ public class Auction {
         this.buyout = buyout;
         this.endTime = endTime;
         this.orderStatus = orderStatus;
+        this.winner = winner;
     }
 
     public String getId() {
@@ -112,5 +114,13 @@ public class Auction {
 
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public String getWinner() {
+        return winner;
+    }
+
+    public void setWinner(String winner) {
+        this.winner = winner;
     }
 }
