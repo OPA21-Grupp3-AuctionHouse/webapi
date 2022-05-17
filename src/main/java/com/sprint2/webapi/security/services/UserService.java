@@ -69,6 +69,7 @@ public class UserService {
             User urs = userData.get();
             urs.setFirstName(user.getFirstName());
             urs.setLastName(user.getLastName());
+            urs.setEmail(user.getEmail());
             urs.setStreetAddress(user.getStreetAddress());
             urs.setCity(user.getCity());
             urs.setPostCode(user.getPostCode());
