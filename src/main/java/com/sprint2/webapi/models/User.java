@@ -43,6 +43,19 @@ public class User {
         this.city = city;
     }
 
+    /*
+    public User(String firstName, String lastName, String username, String email, String streetAddress, String postCode, String city) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.streetAddress = streetAddress;
+        this.postCode = postCode;
+        this.city = city;
+    }
+
+     */
+
     public String getId() {
         return id;
     }

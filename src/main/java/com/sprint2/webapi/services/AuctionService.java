@@ -11,6 +11,8 @@ import java.util.List;
 
 
 import java.util.List;
+import java.util.Optional;
+
 import com.sprint2.webapi.repository.AuctionRepository;
 import com.sprint2.webapi.models.Auction;
 import lombok.AllArgsConstructor;
@@ -35,10 +37,26 @@ public class AuctionService {
 
     }
 
+    public Auction updateAuctionById(Auction auction){
+
+        Optional<Auction> auctionData = auctionRepository.findById(auction.getId());
+
+        if(auctionData.isPresent())
+        {
+            Auction act = auctionData.get();
+            act.setOrderStatus(auction.getOrderStatus());
+            act.setWinner(auction.getWinner());
+            return auctionRepository.save(act);
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     public Auction getAuctionById(String id) {
         return auctionRepository.findById(id).get();
 
     }
-
 
 }

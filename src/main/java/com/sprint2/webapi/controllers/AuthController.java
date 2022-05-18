@@ -54,12 +54,10 @@ public class AuthController {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-        System.out.println("Authentication: " + authentication);
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        System.out.println("Userdetails: " + userDetails);
 
         ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
 
@@ -87,7 +85,6 @@ public class AuthController {
         }
 
         // Create new user's account
-        System.out.println(signUpRequest.getFirstName());
         User user = new User(
                 signUpRequest.getFirstName(),
                 signUpRequest.getLastName(),

@@ -6,6 +6,8 @@ import com.sprint2.webapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8080"}, maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping("/api/user")
@@ -48,6 +50,13 @@ public class UserController {
         User user = userService.get();
         String username = user.getUsername();
         return username;
+    }
+
+    @GetMapping("/getAddress")
+    public String[] getAddress(){
+        User user = userService.get();
+        String[] address = {user.getStreetAddress(), user.getPostCode(), user.getCity()};
+        return address;
     }
 
     //Update User information

@@ -19,6 +19,18 @@ public class UserService {
     UserRepository userRepository;
 
     public User getUserById(String id){
+        /*
+        User user = new User(
+                userRepository.findById(id).get().getFirstName(),
+                userRepository.findById(id).get().getLastName(),
+                userRepository.findById(id).get().getUsername(),
+                userRepository.findById(id).get().getEmail(),
+                userRepository.findById(id).get().getStreetAddress(),
+                userRepository.findById(id).get().getPostCode(),
+                userRepository.findById(id).get().getCity()
+        );
+         */
+
         return userRepository.findById(id).get();
     }
 
@@ -69,6 +81,7 @@ public class UserService {
             User urs = userData.get();
             urs.setFirstName(user.getFirstName());
             urs.setLastName(user.getLastName());
+            urs.setEmail(user.getEmail());
             urs.setStreetAddress(user.getStreetAddress());
             urs.setCity(user.getCity());
             urs.setPostCode(user.getPostCode());

@@ -24,17 +24,18 @@ public class AuctionController {
     @Autowired
     AuctionRepository auctionRepository;
 
-
-
     @PostMapping("/createauction")
     public ResponseEntity<?> createAuction(@Valid @RequestBody Auction auction) {
-
-
 
         auctionService.createAuction(auction);
 
         return ResponseEntity.ok("Auction created successfully!");
 
+    }
+
+    @PutMapping("/updateauction")
+    public Auction updateAuction( @RequestBody Auction auction){
+        return auctionService.updateAuctionById(auction);
     }
 
     @GetMapping("/auctions")
