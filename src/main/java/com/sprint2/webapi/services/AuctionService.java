@@ -46,6 +46,7 @@ public class AuctionService {
             Auction act = auctionData.get();
             act.setOrderStatus(auction.getOrderStatus());
             act.setWinner(auction.getWinner());
+            act.setEndTime(auction.getEndTime());
             return auctionRepository.save(act);
         }
         else
