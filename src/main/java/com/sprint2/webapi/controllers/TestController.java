@@ -9,15 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 //TestController has accessing protected resource methods with authentication based validations.
 
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600, allowCredentials = "true")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/")
 public class TestController {
     @GetMapping("/welcomepage")
     public String allAccess() {
         return "Welcome Page";
     }
 
+
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/startpage")
     public String userAccess() {
         return "User Content, Card Bazaar.";

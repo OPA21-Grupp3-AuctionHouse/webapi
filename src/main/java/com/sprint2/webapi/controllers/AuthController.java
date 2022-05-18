@@ -36,7 +36,7 @@ import com.sprint2.webapi.security.services.UserDetailsImpl;
 
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600, allowCredentials = "true")
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/")
 public class AuthController {
     @Autowired
     AuthenticationManager authenticationManager;
