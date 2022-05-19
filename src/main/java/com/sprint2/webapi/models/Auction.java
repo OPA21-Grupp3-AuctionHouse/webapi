@@ -49,12 +49,12 @@ public class Auction {
         this.ownerId = ownerId;
     }
 
-    public String getImageURL() {
+    public String getImage() {
         return image;
     }
 
-    public void setImageURL (String image) {
-        this.image = image ;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getCategory() {
