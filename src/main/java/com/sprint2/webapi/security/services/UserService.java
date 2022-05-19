@@ -3,8 +3,10 @@ package com.sprint2.webapi.security.services;
 import com.sprint2.webapi.models.User;
 import com.sprint2.webapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotBlank;
@@ -17,6 +19,9 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    public PasswordEncoder passwordEncoder;
 
     public User getUserById(String id){
         /*
@@ -50,6 +55,17 @@ public class UserService {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         return userDetails;
 
+    }
+
+
+    public void changeUserPassword(final User user, final String password) {
+        user.setPassword(passwordEncoder.encode(password));
+        userRepository.save(user);
+    }
+
+
+    public boolean checkIfValidOldPassword(final User user, final String oldPassword) {
+        return passwordEncoder.matches(oldPassword, user.getPassword());
     }
 
     public User get() {

@@ -27,6 +27,8 @@ import com.sprint2.webapi.repository.UserRepository;
 import com.sprint2.webapi.security.jwt.JwtUtils;
 import com.sprint2.webapi.security.services.UserDetailsImpl;
 
+import java.util.Locale;
+
 //Controller receives and handles request after it was filtered by OncePerRequestFilter.
 //AuthController handles signup/login requests
 
@@ -126,5 +128,24 @@ public class AuthController {
 
 
     }
+
+    @PostMapping("/updatePassword")
+    public ResponseEntity<?> changeUserPassword(@RequestParam("oldpassword") String oldPassword,
+                                                @RequestParam("password") String password
+                                                ) {
+        User user = userService.get();
+
+        if (!userService.checkIfValidOldPassword(user, oldPassword)) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Wrong current password!"));
+
+        }
+        userService.changeUserPassword(user, password);
+        return ResponseEntity
+                .ok()
+                .body(new MessageResponse("Password updated"));
+    }
+
 
 }
