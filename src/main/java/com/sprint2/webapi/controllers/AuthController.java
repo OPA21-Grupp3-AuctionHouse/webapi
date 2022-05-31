@@ -32,7 +32,7 @@ import java.util.Locale;
 //Controller receives and handles request after it was filtered by OncePerRequestFilter.
 //AuthController handles signup/login requests
 
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8080"}, maxAge = 3600, allowCredentials = "true")
+@CrossOrigin(origins = {"http://146.190.18.26:3000", "http://localhost:3000", "http://localhost:8080"}, maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping("/")
 public class AuthController {

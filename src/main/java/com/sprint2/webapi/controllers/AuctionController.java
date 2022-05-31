@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @AllArgsConstructor
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8080"}, maxAge = 3600, allowCredentials = "true")
+@CrossOrigin(origins = {"http://146.190.18.26:3000", "http://localhost:3000", "http://localhost:8080"}, maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping("/api/")
 public class AuctionController {
