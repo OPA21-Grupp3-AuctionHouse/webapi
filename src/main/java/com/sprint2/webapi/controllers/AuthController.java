@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,6 +28,9 @@ import com.sprint2.webapi.payload.response.UserInfoResponse;
 import com.sprint2.webapi.repository.UserRepository;
 import com.sprint2.webapi.security.jwt.JwtUtils;
 import com.sprint2.webapi.security.services.UserDetailsImpl;
+import org.apache.commons.lang3.RandomStringUtils;
+
+import java.util.Optional;
 
 
 //Controller receives and handles request after it was filtered by OncePerRequestFilter.
@@ -46,6 +51,10 @@ public class AuthController {
 
     @Autowired
     PasswordEncoder encoder;
+
+
+    @Autowired
+    private JavaMailSender emailSender;
 
     @Autowired
     JwtUtils jwtUtils;
@@ -70,6 +79,30 @@ public class AuthController {
                 );
     }
 
+    @PostMapping("/forgotPassword/{username}")
+    public String newPassword(@PathVariable String username) {
+        if (userRepository.existsByUsername(username)) {
+            String generatedString = RandomStringUtils.randomAlphanumeric(8);
+            User user = userService.getUserByUsername(username);
+            String email = user.getEmail();
+
+            userService.changeUserPassword(user, generatedString);
+
+
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom("cardbazaar3@gmail.com");
+            message.setTo(email);
+            message.setSubject("New Password");
+            message.setText("Here is your new password: "+generatedString+ "\nFor account with name: " +username);
+            emailSender.send(message);
+            return "email sent to "+email;
+        }
+        else {
+            return "failed for "+username;
+        }
+
+
+    }
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
